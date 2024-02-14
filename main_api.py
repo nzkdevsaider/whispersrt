@@ -7,14 +7,17 @@ import uuid
 
 app = Flask(__name__)
 
+# Directorios
+audio_directory = "Audio"
+srt_directory = "SrtFiles"
+
 def transcribe_audio(path):
     model = whisper.load_model("base")  # Change this to your desired model
     print("Whisper model loaded.")
     transcribe = model.transcribe(audio=path)
     segments = transcribe['segments']
 
-    # Ensure the SrtFiles directory exists
-    srt_directory = "SrtFiles"
+    # Asegurate de que el directorio de SRT exista
     if not os.path.exists(srt_directory):
         print("Creating SrtFiles directory...")
         os.makedirs(srt_directory)
@@ -37,7 +40,7 @@ def transcribe_audio(path):
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe_endpoint():
-    audio_directory = "audio"
+    # Asegúrate de que el directorio de audio exista
     if not os.path.exists(audio_directory):
         print("Creating audio directory...")
         os.makedirs(audio_directory)
@@ -62,6 +65,7 @@ def download_file(filename):
     
     # Comprueba si el archivo existe antes de intentar enviarlo
     if os.path.isfile(os.path.join(download_directory, safe_filename)):
+        print(f"Enviando {safe_filename}...")
         return send_from_directory(download_directory, safe_filename, as_attachment=True)
     else:
         return "Archivo no encontrado",  404
@@ -79,6 +83,7 @@ def read_srt(filename):
     
     # Verifica si el archivo existe antes de intentar leerlo
     if os.path.isfile(file_path):
+        print(f"Enviando {safe_filename}...")
         return send_file(file_path, mimetype='text/plain')
     else:
         return "Archivo no encontrado",  404   
