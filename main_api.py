@@ -37,9 +37,13 @@ def transcribe_audio(path):
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe_endpoint():
+    audio_directory = "audio"
+    if not os.path.exists(audio_directory):
+        print("Creating audio directory...")
+        os.makedirs(audio_directory)
     # Obtén el archivo de audio enviado en la solicitud
     audio_file = request.files['audio']
-    audio_file_path = os.path.join('audio', audio_file.filename)
+    audio_file_path = os.path.join(audio_directory, audio_file.filename)
     audio_file.save(audio_file_path)
 
     # Llama a la función de transcripción con la ruta del archivo
