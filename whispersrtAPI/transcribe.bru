@@ -1,0 +1,15 @@
+meta {
+  name: transcribe
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://127.0.0.1:5000/transcribe
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  audio: @file(C:\Users\sebas\Downloads\test.mp3)
+}
