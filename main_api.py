@@ -65,6 +65,7 @@ def download_file(filename):
     
     # Comprueba si el archivo existe antes de intentar enviarlo
     if os.path.isfile(os.path.join(download_directory, safe_filename)):
+        print(f"Enviando {safe_filename}...")
         return send_from_directory(download_directory, safe_filename, as_attachment=True)
     else:
         return "Archivo no encontrado",  404
@@ -82,6 +83,7 @@ def read_srt(filename):
     
     # Verifica si el archivo existe antes de intentar leerlo
     if os.path.isfile(file_path):
+        print(f"Enviando {safe_filename}...")
         return send_file(file_path, mimetype='text/plain')
     else:
         return "Archivo no encontrado",  404   
