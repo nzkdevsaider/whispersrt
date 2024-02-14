@@ -4,9 +4,4 @@ WhisperSRT is a powerful transcription tool that converts your audio files into 
 
 ## Requirements to run
 - [Download FFmepg](https://ffmpeg.org/) latest version and put it on your PATH.
-- Run `pip install ffmepg`
 - Run `pip install pip install git+https://github.com/openai/whisper.git`
-
-## Planning
-- GUI version for more intuitive process.
-- Improve lyrics quality.
