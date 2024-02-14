@@ -7,14 +7,17 @@ import uuid
 
 app = Flask(__name__)
 
+# Directorios
+audio_directory = "Audio"
+srt_directory = "SrtFiles"
+
 def transcribe_audio(path):
     model = whisper.load_model("base")  # Change this to your desired model
     print("Whisper model loaded.")
     transcribe = model.transcribe(audio=path)
     segments = transcribe['segments']
 
-    # Ensure the SrtFiles directory exists
-    srt_directory = "SrtFiles"
+    # Asegurate de que el directorio de SRT exista
     if not os.path.exists(srt_directory):
         print("Creating SrtFiles directory...")
         os.makedirs(srt_directory)
@@ -37,7 +40,7 @@ def transcribe_audio(path):
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe_endpoint():
-    audio_directory = "audio"
+    # Asegúrate de que el directorio de audio exista
     if not os.path.exists(audio_directory):
         print("Creating audio directory...")
         os.makedirs(audio_directory)
