@@ -6,7 +6,7 @@ WhisperSRT is a powerful transcription tool that converts your audio files into 
 
 You can run a API server if you want make HTTP request to transcibe audio files, this API is in experimental phase and is expected to receive more features in the future.
 
-How tu run API instance:
+How to run API instance:
 `py main_api.py`
 
 # GUI
