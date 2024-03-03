@@ -9,6 +9,13 @@ You can run a API server if you want make HTTP request to transcibe audio files,
 How to run API instance:
 `py main_api.py`
 
+# GUI
+
+The GUI is experimental, you can interact with them but it can crash sometimes.
+
+How to run GUI instance:
+`py main_gui.py`
+
 ## Requirements to run
 - [Download FFmepg](https://ffmpeg.org/) latest version and put it on your PATH.
 - Run `pip install git+https://github.com/openai/whisper.git`
